@@ -19,6 +19,7 @@ private:
     Ui::DialogNew *ui;
 private slots:
     void addImg();
+    void add();
 };
 
 #endif // DIALOGNEW_H

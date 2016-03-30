@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     dialognew.cpp
 
 HEADERS  += mainwindow.h \
-    dialognew.h
+    dialognew.h \
+    possession.h
 
 FORMS    += mainwindow.ui \
     dialognew.ui

@@ -86,8 +86,8 @@
   <widget class="QPushButton" name="pushButton_Valid">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>420</y>
+     <x>440</x>
+     <y>430</y>
      <width>191</width>
      <height>61</height>
     </rect>
@@ -149,7 +149,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBoxsSquareMeter"/>
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxsSquareMeter">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="singleStep">
+         <double>10.000000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -169,7 +176,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBoxsSquareMeter_terrain"/>
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxsSquareMeter_terrain">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="singleStep">
+         <double>10.000000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -189,7 +203,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QSpinBox" name="spinBoxNumberRoom"/>
+       <widget class="QSpinBox" name="spinBoxNumberRoom">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -382,6 +400,38 @@
    </property>
    <property name="text">
     <string>Adresse :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>440</y>
+     <width>100</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Prix :</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBox_prix">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>440</y>
+     <width>141</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+   <property name="maximum">
+    <double>9999999999.989999771118164</double>
+   </property>
+   <property name="singleStep">
+    <double>10000.000000000000000</double>
    </property>
   </widget>
  </widget>
