@@ -16,13 +16,20 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     dialognewb.cpp \
-    dialognewa.cpp
+    dialognewa.cpp \
+    dialogcommitnew.cpp \
+    annonce.cpp
 
 HEADERS  += mainwindow.h \
     possession.h \
     dialognewb.h \
-    dialognewa.h
+    dialognewa.h \
+    dialogcommitnew.h \
+    annonce.h
 
 FORMS    += mainwindow.ui \
     dialognewA.ui \
-    dialognewB.ui
+    dialognewB.ui \
+    dialogcommitnew.ui
+
+DISTFILES +=

@@ -1,7 +1,9 @@
 #include "DialogNewB.h"
 #include "DialogNewA.h"
+#include "dialogcommitnew.h"
 #include "ui_dialognewB.h"
 #include "ui_dialognewA.h"
+#include "ui_dialogcommitnew.h"
 #include "mainwindow.h"
 #include <QFileDialog>
 #include <QMessageBox>
@@ -57,6 +59,8 @@ DialogNewB::DialogNewB(QWidget *parent, QString _num, QString _code, QString _vi
 
 }
 
+
+/* Retour à la page précédente */
 void DialogNewB::previous()
 {
     /* sauvegarde des données entre les pages */
@@ -68,11 +72,19 @@ void DialogNewB::previous()
     this->close();
 }
 
+/* fenetre de validation */
 void DialogNewB::add()
 {
-
+    /* sauvegarde des données entre les pages */
+    titre = ui->lineEdit_Titre->text();
+    descr = ui->plainTextEdit_Description->toPlainText();
+    DialogCommitNew *c = new DialogCommitNew(this, num, code, ville, type, piece, surfaceT, surfaceH, nom, prenom, mail, tel, typeV, prix, titre, descr, image1, image2, image3, image4);
+    c->setModal(true);
+    c->show();
 }
 
+
+/* selectionner de nouvelles images */
 void DialogNewB::addImg1()
 {
     /* fonction appeler quand on clicque sur le bouton choisir une image */
@@ -114,34 +126,43 @@ void DialogNewB::addImg4()
     image4 = file;
 }
 
+/* actualisation des images */
 void DialogNewB::actualiseImgs(QString file1, QString file2, QString file3, QString file4)
 {
     // on veut les dimmension actuel du label
-    int w = ui->label_img->width();
-    int h = ui->label_img->height();
+    int w ;
+    int h ;
 
     /* Si l'image n a été donné précédement, on l'affiche */
 
     if (!(file1.isEmpty()))
     {
+        w = ui->label_img->width();
+        h = ui->label_img->height();
         QPixmap *qp = new QPixmap(file1);
         ui->label_img->setPixmap(qp->scaled(w,h,Qt::KeepAspectRatio));
     }
 
     if (!(file2.isEmpty()))
     {
+        w = ui->label_img_2->width();
+        h = ui->label_img_2->height();
         QPixmap *qp = new QPixmap(file2);
         ui->label_img_2->setPixmap(qp->scaled(w,h,Qt::KeepAspectRatio));
     }
 
     if (!(file3.isEmpty()))
     {
+        w = ui->label_img_3->width();
+        h = ui->label_img_3->height();
         QPixmap *qp = new QPixmap(file3);
         ui->label_img_3->setPixmap(qp->scaled(w,h,Qt::KeepAspectRatio));
     }
 
     if (!(file4.isEmpty()))
     {
+        w = ui->label_img_4->width();
+        h = ui->label_img_4->height();
         QPixmap *qp = new QPixmap(file4);
         ui->label_img_4->setPixmap(qp->scaled(w,h,Qt::KeepAspectRatio));
     }

@@ -3,6 +3,7 @@
 #include <vector>
 #include <QMainWindow>
 #include "possession.h"
+#include "annonce.h"
 #define MAX 8
 namespace Ui {
 class MainWindow;
@@ -18,6 +19,8 @@ public:
     //QString types[MAX] = {"Appartement","Maison","Bureau","Commerce","Ferme","Jardin","Château","Terrain vague"};
     std::vector<possession> pos;
     void save();
+
+
 private:
     Ui::MainWindow *ui;
 private slots:

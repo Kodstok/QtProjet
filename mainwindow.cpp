@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "dialognewa.h"
+#include "annonce.h"
+#include <vector>
 #include <QtXml>
 #include <QMessageBox>
 
@@ -13,6 +15,10 @@ MainWindow::MainWindow(QWidget *parent) :
                      this,SLOT(dialogAdd()));
     QObject::connect(ui->pushButtonQuit,SIGNAL(clicked()),
                      qApp,SLOT(quit()));
+
+    /* création du tableau d'annonces */
+    //vector<Annonce> tab_annonces;
+
 }
 
 void MainWindow::dialogAdd()
