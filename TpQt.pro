@@ -4,6 +4,7 @@
 #
 #-------------------------------------------------
 
+QT += widgets
 QT       += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -14,11 +15,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    dialognew.cpp
+    dialognewb.cpp \
+    dialognewa.cpp
 
 HEADERS  += mainwindow.h \
-    dialognew.h \
-    possession.h
+    possession.h \
+    dialognewb.h \
+    dialognewa.h
 
 FORMS    += mainwindow.ui \
-    dialognew.ui
+    dialognewA.ui \
+    dialognewB.ui

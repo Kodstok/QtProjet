@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "dialognew.h"
+#include "dialognewa.h"
 #include <QtXml>
 #include <QMessageBox>
 
@@ -11,11 +11,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QObject::connect(ui->pushButtonAdd,SIGNAL(clicked()),
                      this,SLOT(dialogAdd()));
+    QObject::connect(ui->pushButtonQuit,SIGNAL(clicked()),
+                     qApp,SLOT(quit()));
 }
 
 void MainWindow::dialogAdd()
 {
-    DialogNew *d = new DialogNew(this);
+    DialogNewA *d = new DialogNewA(this);
     d->show();
 }
 
