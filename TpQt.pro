@@ -14,11 +14,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     dialognewb.cpp \
     dialognewa.cpp \
     dialogcommitnew.cpp \
-    annonce.cpp
+    annonce.cpp \
+    mainwindow.cpp
 
 HEADERS  += mainwindow.h \
     possession.h \
@@ -30,6 +30,9 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui \
     dialognewA.ui \
     dialognewB.ui \
-    dialogcommitnew.ui
+    dialogcommitnew.ui \
+    annonce.ui \
+    recherche.ui
 
 DISTFILES +=
+RESOURCES = icones.qrc

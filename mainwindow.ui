@@ -47,7 +47,7 @@
      <x>0</x>
      <y>0</y>
      <width>1038</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -58,10 +58,52 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionAjouter"/>
+   <addaction name="actionRecherche"/>
+   <addaction name="separator"/>
+   <addaction name="actionQuitter"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionAjouter">
+   <property name="icon">
+    <iconset>
+     <normaloff>ajouter.png</normaloff>ajouter.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ajouter</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une possession à la base de donnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionRecherche">
+   <property name="icon">
+    <iconset>
+     <normaloff>recherche.png</normaloff>recherche.png</iconset>
+   </property>
+   <property name="text">
+    <string>Recherche</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Faire une recherche&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/exit.png</normaloff>:/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+   <property name="toolTip">
+    <string>Quitter le programme en sauvgardent </string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icones.qrc"/>
+ </resources>
  <connections/>
 </ui>
