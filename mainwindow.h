@@ -16,15 +16,16 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    //QString types[MAX] = {"Appartement","Maison","Bureau","Commerce","Ferme","Jardin","Château","Terrain vague"};
     std::vector<possession> pos;
     void save();
 
 
 private:
     Ui::MainWindow *ui;
+
 private slots:
     void dialogAdd();
+    void dialogRech();
 };
 
 #endif // MAINWINDOW_H
