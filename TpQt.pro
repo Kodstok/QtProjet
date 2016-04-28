@@ -18,21 +18,23 @@ SOURCES += main.cpp\
     dialognewa.cpp \
     dialogcommitnew.cpp \
     annonce.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    dialogrecherche.cpp
 
 HEADERS  += mainwindow.h \
     possession.h \
     dialognewb.h \
     dialognewa.h \
     dialogcommitnew.h \
-    annonce.h
+    annonce.h \
+    dialogrecherche.h
 
 FORMS    += mainwindow.ui \
     dialognewA.ui \
     dialognewB.ui \
     dialogcommitnew.ui \
     annonce.ui \
-    recherche.ui
+    dialogrecherche.ui
 
 DISTFILES +=
 RESOURCES = icones.qrc
