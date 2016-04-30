@@ -4,14 +4,17 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QApplication>
+#include <annonce.h>
 
-DialogCommitNew::DialogCommitNew(QWidget *parent, QString _num, QString _code, QString _ville, QString _type, int _piece, double _surfaceT, double _surfaceH, QString _nom, QString _prenom, QString _mail, QString _tel, QString _typeV, double _prix, QString _titre, QString _descr, QString _image1, QString _image2, QString _image3, QString _image4) :
+DialogCommitNew::DialogCommitNew(QWidget *parent, std::vector<Annonce> *_ref_tab, QString _num, QString _code, QString _ville, QString _type, int _piece, double _surfaceT, double _surfaceH, QString _nom, QString _prenom, QString _mail, QString _tel, QString _typeV, double _prix, QString _titre, QString _descr, QString _image1, QString _image2, QString _image3, QString _image4) :
     QDialog(parent),
     ui(new Ui::DialogCommitNew)
 {
     ui->setupUi(this);
     this->setModal(false);
     /* récupération des données de la page précédente */
+    b_parent = parent;
+    ref_tab = _ref_tab;
     num = _num;
     code = _code;
     ville = _ville;
@@ -53,6 +56,7 @@ DialogCommitNew::DialogCommitNew(QWidget *parent, QString _num, QString _code, Q
     /* PushButton: Retour */
     QObject::connect(ui->pushButton_Return_3,SIGNAL(clicked()),this,SLOT(close()));
     QObject::connect(ui->pushButton_Valid_3,SIGNAL(clicked()),this,SLOT(validation()));
+
 }
 
 DialogCommitNew::~DialogCommitNew()
@@ -158,5 +162,30 @@ void DialogCommitNew::validation()
         return ;
     }
 
+    Annonce newa;
+    newa.num = num;
+    newa.code = code;
+    newa.ville = ville;
+    newa.type = type;
+    newa.piece = piece;
+    newa.surfaceT = surfaceT;
+    newa.surfaceH = surfaceH;
+    newa.nom = nom;
+    newa.prenom = prenom;
+    newa.mail = mail;
+    newa.tel = tel;
+    newa.typeV = typeV;
+    newa.prix = prix;
+    newa.titre = titre;
+    newa.descr = descr;
+    newa.image1 = image1;
+    newa.image2 = image2;
+    newa.image3 = image3;
+    newa.image4 = image4;
+
+    ref_tab->push_back(newa);
+    QMessageBox::information(NULL, "Information", "L'annonce: " +  titre + " a bien été enregistré");
+    b_parent->close();
+    close();
 
 }

@@ -22,3 +22,8 @@ Annonce::Annonce(QString _num, QString _code, QString _ville, QString _type, int
     image3 = _image3;
     image4 = _image4;
 }
+
+
+Annonce::~Annonce()
+{
+}

@@ -1,8 +1,10 @@
 #ifndef POSSESSION_H
 #define POSSESSION_H
-struct possession {
-    QString types;
+#include <vector>
+#include "annonce.h"
 
-};
+typedef struct possession {
+    std::vector<Annonce> tab_annonces;
+} possession;
 
 #endif // POSSESSION_H
