@@ -14,7 +14,6 @@ DialogNewA::DialogNewA(QWidget *parent, std::vector<Annonce> *_ref_tab, QString 
     ui->setupUi(this);
 
     /* récupération des données entre les pages */
-    //_ref_tab[1].num = "mdr";
     ref_tab = _ref_tab;
     num = _num;
     code = _code;

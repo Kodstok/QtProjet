@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     dialogcommitnew.cpp \
     annonce.cpp \
     mainwindow.cpp \
-    dialogrecherche.cpp
+    dialogrecherche.cpp \
+    objeta.cpp
 
 HEADERS  += mainwindow.h \
     possession.h \
@@ -27,7 +28,8 @@ HEADERS  += mainwindow.h \
     dialognewa.h \
     dialogcommitnew.h \
     annonce.h \
-    dialogrecherche.h
+    dialogrecherche.h \
+    objeta.h
 
 FORMS    += mainwindow.ui \
     dialognewA.ui \

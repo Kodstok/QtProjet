@@ -23,6 +23,7 @@
    </attribute>
    <addaction name="actionAjouter"/>
    <addaction name="actionRech"/>
+   <addaction name="actionRefresh"/>
    <addaction name="separator"/>
    <addaction name="actionQuitter"/>
   </widget>
@@ -71,6 +72,14 @@
    </property>
    <property name="toolTip">
     <string>Sauvegarder et quitter le programme</string>
+   </property>
+  </action>
+  <action name="actionRefresh">
+   <property name="text">
+    <string>Rafraîchir</string>
+   </property>
+   <property name="toolTip">
+    <string>Rafraîchir la page d'annonces</string>
    </property>
   </action>
  </widget>
