@@ -66,7 +66,7 @@ DialogCommitNew::~DialogCommitNew()
 
 void DialogCommitNew::actualiseImgs(QString file1, QString file2, QString file3, QString file4)
 {
-    // on veut les dimmension actuel du label
+    /* on veut les dimmension actuel du label */
     int w ;
     int h ;
 

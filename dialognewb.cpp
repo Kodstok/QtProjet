@@ -37,7 +37,7 @@ DialogNewB::DialogNewB(QWidget *parent, std::vector<Annonce> *_ref_tab, QString 
     image3 = _image3;
     image4 = _image4;
 
-    /* reaffichage des données entre les pages */
+    /* réaffichage des données entre les pages */
     ui->lineEdit_Titre->insert(titre);
     ui->plainTextEdit_Description->insertPlainText(descr);
     actualiseImgs(image1, image2, image3, image4);
@@ -57,11 +57,6 @@ DialogNewB::DialogNewB(QWidget *parent, std::vector<Annonce> *_ref_tab, QString 
 
     /* PushButton: Annuler */
     QObject::connect(ui->pushButton_Annuler_2,SIGNAL(clicked()),this,SLOT(close()));
-
-    //ref_tab->at(1).num = "lol";
-    //QMessageBox::information(NULL, "Information", "La rue est :<br />" + ref_tab->at(1).num);
-
-
 }
 
 

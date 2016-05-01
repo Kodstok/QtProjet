@@ -3,7 +3,6 @@
 #include "dialognewa.h"
 #include "dialogrecherche.h"
 #include "annonce.h"
-#include "objeta.h"
 #include "xml_dom.h"
 #include <stdio.h>
 #include <vector>
@@ -27,7 +26,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    /* connection de la barre d'outils */
     QObject::connect(ui->actionAjouter,SIGNAL(triggered()),
                      this,SLOT(dialogAdd()));
 
@@ -37,11 +35,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->actionQuitter,SIGNAL(triggered()),
                      this,SLOT(quitMain()));
 
-    QObject::connect(ui->actionRefresh,SIGNAL(triggered()),
-                     this,SLOT(slot_refresh()));
-
 
     /* création du tableau d'annonces */
+    //ref_tab = tab_annonces;
     tab_annonces = new vector<Annonce>();
 
 
@@ -52,14 +48,14 @@ MainWindow::MainWindow(QWidget *parent) :
         if(!xml_doc.open(QIODevice::ReadOnly))// Si l'on n'arrive pas à ouvrir le fichier XML.
         {
             QMessageBox::warning(this,"Erreur à l'ouverture du document XML","Le document XML n'a pas pu être ouvert. Vérifiez que le nom est le bon et que le document est bien placé");
-            return;
+            //return;
         }
 
         if (!dom.setContent(&xml_doc)) // Si l'on n'arrive pas à associer le fichier XML à l'objet DOM.
         {
                 xml_doc.close();
                 QMessageBox::warning(this,"Erreur à l'ouverture du document XML","Le document XML n'a pas pu être attribué à l'objet QDomDocument.");
-                return;
+                //return;
         }
 
         /* Récupération des éléments */
@@ -95,6 +91,8 @@ MainWindow::MainWindow(QWidget *parent) :
             /* ajouter la nouvelle annonce dans le vecteur */
             tab_annonces->push_back(a);
 
+            //tab_annonces.push_back(a);
+            //QMessageBox::information(NULL, "Information", "La rue est :<br />" + e.attribute("num"));
             noeud = noeud.nextSibling();
         }
 
@@ -110,7 +108,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::affiche_annonces(std::vector<Annonce> *tab_annonces)
 {
-    scroll_annonces = new QScrollArea();
+    QScrollArea *scroll_annonces = new QScrollArea();
     setCentralWidget(scroll_annonces);
     QWidget *contenu = new QWidget;
     QVBoxLayout *mLayout = new QVBoxLayout();
@@ -130,14 +128,14 @@ void MainWindow::affiche_annonces(std::vector<Annonce> *tab_annonces)
         QVBoxLayout *vbox_prix = new QVBoxLayout();
 
         /* labels */
-        QLabel *t_titre = new QLabel(tab_annonces->at(i).titre);
+        QLabel *t_titre = new QLabel(tab_annonces->at(i).titre.toLatin1());
         QLabel *t_image = new QLabel();
-        QPixmap *pixmap_img = new QPixmap(tab_annonces->at(i).image1);
+        QPixmap *pixmap_img = new QPixmap(tab_annonces->at(i).image1.toLatin1());
              t_image->setPixmap(pixmap_img->scaled(150,150,Qt::KeepAspectRatio));
 
-        QLabel *t_ville = new QLabel(tab_annonces->at(i).ville);
-        QLabel *t_bien = new QLabel(tab_annonces->at(i).type);
-        QLabel *t_offre = new QLabel(tab_annonces->at(i).typeV);
+        QLabel *t_ville = new QLabel(tab_annonces->at(i).ville.toLatin1());
+        QLabel *t_bien = new QLabel(tab_annonces->at(i).type.toLatin1());
+        QLabel *t_offre = new QLabel(tab_annonces->at(i).typeV.toLatin1());
 
         double prix_c = tab_annonces->at(i).prix;
         QString prix_s = QString::number(prix_c);
@@ -183,50 +181,13 @@ void MainWindow::affiche_annonces(std::vector<Annonce> *tab_annonces)
 
         /* annonce complète */
         mLayout->addWidget(frame_annonce);
-
-        /* connection au bouton de visualisation de l'annonce */
-        ObjetA *A = new ObjetA(this, i, tab_annonces);
-        QObject::connect(boutonA,SIGNAL(clicked()), A, SLOT(viewAnnonce()));
+        //mLayout->addWidget(frame_annonce);
     }
 
     /* mise dans le scroll */
     scroll_annonces->setWidget(contenu);
     scroll_annonces->show();
 }
-
-
-
-/* Slot de visualisation d'annonce */
-void ObjetA::viewAnnonce()
-{
-    QString id_s = QString::number(id_a);
-    QString titre = tab_annonces->at(id_a).titre;
-    QMessageBox::information(NULL, "Information", "Test: ID de l'annonce: " + id_s);
-    QMessageBox::information(NULL, "Information", "Test: Titre de l'annonce: " + titre);
-}
-
-
-/* Fonction de suffression du scrollarea */
-void MainWindow::reset_annonces()
-{
-    delete scroll_annonces;
-}
-
-
-/* Fonction de rafraichisement */
-void MainWindow::refresh_annonces()
-{
-    reset_annonces();
-    affiche_annonces(tab_annonces);
-}
-
-
-/* slot quand on appuie sur le bouton rafraîchir */
-void MainWindow::slot_refresh()
-{
-    refresh_annonces();
-}
-
 
 void MainWindow::dialogAdd()
 {
@@ -235,13 +196,38 @@ void MainWindow::dialogAdd()
     d->show();
 }
 
-
-/* création de la fenetre rechercher */
 void MainWindow::dialogRech()
 {
+    //test
+    //QMessageBox::information(NULL, "Information", "table:<br />" + tab_annonces->at(2).num);
+
     printf("Recherche\n");
     DialogRecherche *r = new DialogRecherche(this);
     r->show();
+}
+
+/* obsolète */
+void MainWindow::save()
+{
+/* ebauche de la fonction pour sauvgarder au formart xml
+ * à la fin de l'utilisation du programe on écrit tout ce qu'il y a
+ * dans le vecteur pos (les différentes possessions des gens) dans le fichier xml
+ */
+    QDomDocument doc( "MonDoc" );
+    QDomElement root = doc.createElement( "possessions" );
+    doc.appendChild( root );
+    QDomElement p = doc.createElement("possession");
+    p.setAttribute("prix",100);
+    p.setAttribute("test","lol");
+    root.appendChild(p);
+    QFile file("/Users/Kodstok/TpQt/possessions.xml");
+    if(!file.open(QIODevice::WriteOnly))
+            QMessageBox::critical(this,"Erreur","Impossible d'écrire dans le document XML");
+
+
+    QTextStream ts( &file );
+    ts << doc.toString();
+    file.close();
 }
 
 
@@ -257,6 +243,7 @@ void MainWindow::quitMain()
 
     ofstream newfichier;
     newfichier.open("annonces.xml", ios::out);
+
 
     newfichier <<"<?xml version='1.0' encoding='ISO-8859-1' standalone='yes'?>" << endl;
     newfichier <<"<bloc_annonces>" << endl;
@@ -281,13 +268,34 @@ void MainWindow::quitMain()
 
     QDomElement docElem = dom.documentElement();
 
-    /* boucle d'écriture */
+    // boucle
     QDomElement write_elem;
     int i;
     for (i=0; i < (int)tab_annonces->size(); i++)
     {
-        write_elem = dom.createElement("annonce");
 
+        QString _num = tab_annonces->at(i).num
+        write_elem.setAttribute("code", tab_annonces->at(i).code );
+        write_elem.setAttribute("ville", tab_annonces->at(i).ville );
+        write_elem.setAttribute("type", tab_annonces->at(i).type );
+        write_elem.setAttribute("piece", tab_annonces->at(i).piece );
+        write_elem.setAttribute("surfaceT", tab_annonces->at(i).surfaceT );
+        write_elem.setAttribute("surfaceH", tab_annonces->at(i).surfaceH );
+        write_elem.setAttribute("nom", tab_annonces->at(i).nom );
+        write_elem.setAttribute("prenom", tab_annonces->at(i).prenom );
+        write_elem.setAttribute("mail", tab_annonces->at(i).mail );
+        write_elem.setAttribute("tel", tab_annonces->at(i).tel );
+        write_elem.setAttribute("typeV", tab_annonces->at(i).typeV );
+        write_elem.setAttribute("prix", tab_annonces->at(i).prix );
+        write_elem.setAttribute("titre", tab_annonces->at(i).titre );
+        write_elem.setAttribute("descr", tab_annonces->at(i).descr );
+        write_elem.setAttribute("image1", tab_annonces->at(i).image1 );
+        write_elem.setAttribute("image2", tab_annonces->at(i).image2 );
+        write_elem.setAttribute("image3", tab_annonces->at(i).image3 );
+        write_elem.setAttribute("image4", tab_annonces->at(i).image4 );
+
+
+        write_elem = dom.createElement("annonce");
         write_elem.setAttribute("id", i);
         write_elem.setAttribute("num", tab_annonces->at(i).num );
         write_elem.setAttribute("code", tab_annonces->at(i).code );
@@ -323,10 +331,13 @@ void MainWindow::quitMain()
         QTextStream stream(&fichier);
         stream << write_doc;
 
+
         fichier.close();
     }
 
-    /* Quitter l'application */
+
+
+
     QCoreApplication::quit();
 }
 
