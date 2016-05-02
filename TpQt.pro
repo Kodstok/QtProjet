@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     annonce.cpp \
     mainwindow.cpp \
     dialogrecherche.cpp \
-    objeta.cpp
+    objeta.cpp \
+    dialogdetails.cpp \
+    achatcommit.cpp
 
 HEADERS  += mainwindow.h \
     possession.h \
@@ -29,14 +31,18 @@ HEADERS  += mainwindow.h \
     dialogcommitnew.h \
     annonce.h \
     dialogrecherche.h \
-    objeta.h
+    objeta.h \
+    dialogdetails.h \
+    achatcommit.h
 
 FORMS    += mainwindow.ui \
     dialognewA.ui \
     dialognewB.ui \
     dialogcommitnew.ui \
     annonce.ui \
-    dialogrecherche.ui
+    dialogrecherche.ui \
+    dialogdetails.ui \
+    achatcommit.ui
 
 DISTFILES +=
 RESOURCES = icones.qrc
