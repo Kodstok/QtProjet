@@ -24,11 +24,11 @@ public:
     std::vector<Annonce> *tab_annonces;
     QScrollArea *scroll_annonces;
     void affiche_annonces(std::vector<Annonce> *tab_annonces);
+    void reset_annonces();
+    void refresh_annonces();
 
 private:
     Ui::MainWindow *ui;
-    void reset_annonces();
-    void refresh_annonces();
 
 private slots:
     void dialogAdd();

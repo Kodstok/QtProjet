@@ -4,14 +4,17 @@
 #include <QDialog>
 #include <vector>
 #include "annonce.h"
+#include "mainwindow.h"
 
 class ObjetA : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit ObjetA(QWidget *parent = 0, int id = 0, std::vector<Annonce> *_ref_tab = nullptr);
+    explicit ObjetA(MainWindow *parent = 0, int id = 0, std::vector<Annonce> *_ref_tab = nullptr);
     ~ObjetA();
+    MainWindow *a_parent;
+
     int id_a;
 
 private:

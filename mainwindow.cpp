@@ -3,6 +3,7 @@
 #include "dialognewa.h"
 #include "dialogrecherche.h"
 #include "annonce.h"
+#include "dialogdetails.h"
 #include "objeta.h"
 #include "xml_dom.h"
 #include <stdio.h>
@@ -121,7 +122,7 @@ void MainWindow::affiche_annonces(std::vector<Annonce> *tab_annonces)
     for (i=0; i< (int) tab_annonces->size(); i++)
     {
         QWidget *frame_annonce = new QWidget();
-        frame_annonce->setFixedHeight(150);
+        frame_annonce->setFixedHeight(200);
         frame_annonce->setFixedWidth(800);
 
         QVBoxLayout *vbox = new QVBoxLayout(frame_annonce);
@@ -199,10 +200,8 @@ void MainWindow::affiche_annonces(std::vector<Annonce> *tab_annonces)
 /* Slot de visualisation d'annonce */
 void ObjetA::viewAnnonce()
 {
-    QString id_s = QString::number(id_a);
-    QString titre = tab_annonces->at(id_a).titre;
-    QMessageBox::information(NULL, "Information", "Test: ID de l'annonce: " + id_s);
-    QMessageBox::information(NULL, "Information", "Test: Titre de l'annonce: " + titre);
+    DialogDetails *det = new DialogDetails(this, id_a, tab_annonces);
+    det->show();
 }
 
 
