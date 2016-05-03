@@ -9,14 +9,17 @@
 #include <QMessageBox>
 #include <QApplication>
 
-DialogNewB::DialogNewB(QWidget *parent, std::vector<Annonce> *_ref_tab, QString _num, QString _code, QString _ville, QString _type, int _piece, double _surfaceT, double _surfaceH, QString _nom, QString _prenom, QString _mail, QString _tel, QString _typeV, double _prix, QString _titre, QString _descr, QString _image1, QString _image2, QString _image3, QString _image4) :
+DialogNewB::DialogNewB(QWidget *parent, MainWindow *_mw, QString _num, QString _code,
+                       QString _ville, QString _type, int _piece, double _surfaceT, double _surfaceH,
+                       QString _nom, QString _prenom, QString _mail, QString _tel, QString _typeV, double _prix,
+                       QString _titre, QString _descr, QString _image1, QString _image2, QString _image3, QString _image4) :
     QDialog(parent),
     ui(new Ui::DialogNewB)
 {
     ui->setupUi(this);
 
     /* récupération des données entre les pages */
-    ref_tab = _ref_tab;
+    mw=_mw;
     num = _num;
     code = _code;
     ville = _ville;
@@ -67,7 +70,7 @@ void DialogNewB::previous()
     titre = ui->lineEdit_Titre->text();
     descr = ui->plainTextEdit_Description->toPlainText();
 
-    DialogNewA *a = new DialogNewA(this, ref_tab, num, code, ville, type, piece, surfaceT, surfaceH, nom, prenom, mail, tel, typeV, prix, titre, descr, image1, image2, image3, image4);
+    DialogNewA *a = new DialogNewA(this, mw, num, code, ville, type, piece, surfaceT, surfaceH, nom, prenom, mail, tel, typeV, prix, titre, descr, image1, image2, image3, image4);
     a->show();
     this->close();
 }
@@ -78,7 +81,7 @@ void DialogNewB::add()
     /* sauvegarde des données entre les pages */
     titre = ui->lineEdit_Titre->text();
     descr = ui->plainTextEdit_Description->toPlainText();
-    DialogCommitNew *c = new DialogCommitNew(this, ref_tab, num, code, ville, type, piece, surfaceT, surfaceH, nom, prenom, mail, tel, typeV, prix, titre, descr, image1, image2, image3, image4);
+    DialogCommitNew *c = new DialogCommitNew(this, mw, num, code, ville, type, piece, surfaceT, surfaceH, nom, prenom, mail, tel, typeV, prix, titre, descr, image1, image2, image3, image4);
     c->setModal(true);
     c->show();
 }

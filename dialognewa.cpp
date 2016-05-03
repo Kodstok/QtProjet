@@ -7,14 +7,14 @@
 #include <QMessageBox>
 #include <QApplication>
 
-DialogNewA::DialogNewA(QWidget *parent, std::vector<Annonce> *_ref_tab, QString _num, QString _code, QString _ville, QString _type, int _piece, double _surfaceT, double _surfaceH, QString _nom, QString _prenom, QString _mail, QString _tel, QString _typeV, double _prix, QString _titre, QString _descr, QString _image1, QString _image2, QString _image3, QString _image4) :
+DialogNewA::DialogNewA(QWidget *parent, MainWindow *_mw, QString _num, QString _code, QString _ville, QString _type, int _piece, double _surfaceT, double _surfaceH, QString _nom, QString _prenom, QString _mail, QString _tel, QString _typeV, double _prix, QString _titre, QString _descr, QString _image1, QString _image2, QString _image3, QString _image4) :
     QDialog(parent),
     ui(new Ui::DialogNewA)
 {
     ui->setupUi(this);
 
     /* récupération des données entre les pages */
-    ref_tab = _ref_tab;
+    mw = _mw;
     num = _num;
     code = _code;
     ville = _ville;
@@ -74,7 +74,7 @@ void DialogNewA::suivantNew()
     typeV = ui->comboBox_vente_loc->currentText();
     prix = ui->doubleSpinBox_prix->value();
 
-    DialogNewB *b = new DialogNewB(this, ref_tab, num, code, ville, type, piece, surfaceT, surfaceH, nom, prenom, mail, tel, typeV, prix, titre, descr, image1, image2, image3, image4);
+    DialogNewB *b = new DialogNewB(this, mw, num, code, ville, type, piece, surfaceT, surfaceH, nom, prenom, mail, tel, typeV, prix, titre, descr, image1, image2, image3, image4);
     b->show();
     this->close();
 }

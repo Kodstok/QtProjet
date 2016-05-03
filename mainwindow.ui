@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1038</width>
+    <width>1024</width>
     <height>680</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>680</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -21,9 +33,9 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionRefresh"/>
    <addaction name="actionAjouter"/>
    <addaction name="actionRech"/>
-   <addaction name="actionRefresh"/>
    <addaction name="separator"/>
    <addaction name="actionQuitter"/>
   </widget>
@@ -33,8 +45,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1038</width>
-     <height>21</height>
+     <width>1024</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -75,11 +87,15 @@
    </property>
   </action>
   <action name="actionRefresh">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/acceuil.png</normaloff>:/acceuil.png</iconset>
+   </property>
    <property name="text">
     <string>Rafraîchir</string>
    </property>
    <property name="toolTip">
-    <string>Rafraîchir la page d'annonces</string>
+    <string>Revoir toutes les annonces (Acceuil)</string>
    </property>
   </action>
  </widget>

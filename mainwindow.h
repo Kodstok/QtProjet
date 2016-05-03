@@ -29,6 +29,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QString chemin ="/Users/Kodstok/build-TpQt-Desktop_Qt_5_6_0_clang_64bit-Profile/annonces.xml";
 
 private slots:
     void dialogAdd();

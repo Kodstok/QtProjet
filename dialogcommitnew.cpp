@@ -6,7 +6,7 @@
 #include <QApplication>
 #include <annonce.h>
 
-DialogCommitNew::DialogCommitNew(QWidget *parent, std::vector<Annonce> *_ref_tab, QString _num, QString _code, QString _ville, QString _type, int _piece, double _surfaceT, double _surfaceH, QString _nom, QString _prenom, QString _mail, QString _tel, QString _typeV, double _prix, QString _titre, QString _descr, QString _image1, QString _image2, QString _image3, QString _image4) :
+DialogCommitNew::DialogCommitNew(QWidget *parent, MainWindow *_mw, QString _num, QString _code, QString _ville, QString _type, int _piece, double _surfaceT, double _surfaceH, QString _nom, QString _prenom, QString _mail, QString _tel, QString _typeV, double _prix, QString _titre, QString _descr, QString _image1, QString _image2, QString _image3, QString _image4) :
     QDialog(parent),
     ui(new Ui::DialogCommitNew)
 {
@@ -14,7 +14,7 @@ DialogCommitNew::DialogCommitNew(QWidget *parent, std::vector<Annonce> *_ref_tab
     this->setModal(false);
     /* récupération des données de la page précédente */
     b_parent = parent;
-    ref_tab = _ref_tab;
+    mw=_mw;
     num = _num;
     code = _code;
     ville = _ville;
@@ -183,9 +183,10 @@ void DialogCommitNew::validation()
     newa.image3 = image3;
     newa.image4 = image4;
 
-    ref_tab->push_back(newa);
+    mw->tab_annonces->push_back(newa);
     QMessageBox::information(NULL, "Information", "L'annonce: " +  titre + " a bien été enregistré");
     b_parent->close();
     close();
+    mw->refresh_annonces();
 
 }

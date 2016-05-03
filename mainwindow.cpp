@@ -42,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
                      this,SLOT(slot_refresh()));
 
 
+
     /* création du tableau d'annonces */
     tab_annonces = new vector<Annonce>();
 
@@ -49,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     /* ###################### main XML #########################*/
 
         QDomDocument dom("annonces");
-        QFile xml_doc("annonces.xml");
+        QFile xml_doc(chemin);
         if(!xml_doc.open(QIODevice::ReadOnly))// Si l'on n'arrive pas à ouvrir le fichier XML.
         {
             QMessageBox::warning(this,"Erreur à l'ouverture du document XML","Le document XML n'a pas pu être ouvert. Vérifiez que le nom est le bon et que le document est bien placé");
@@ -123,7 +124,7 @@ void MainWindow::affiche_annonces(std::vector<Annonce> *tab_annonces)
     {
         QWidget *frame_annonce = new QWidget();
         frame_annonce->setFixedHeight(200);
-        frame_annonce->setFixedWidth(800);
+        frame_annonce->setFixedWidth(this->width()-50);
 
         QVBoxLayout *vbox = new QVBoxLayout(frame_annonce);
         QHBoxLayout *hbox = new QHBoxLayout();
@@ -230,7 +231,7 @@ void MainWindow::slot_refresh()
 void MainWindow::dialogAdd()
 {
     printf("Add\n");
-    DialogNewA *d = new DialogNewA(this, tab_annonces);
+    DialogNewA *d = new DialogNewA(this, this);
     d->show();
 }
 
@@ -249,13 +250,13 @@ void MainWindow::quitMain()
 {
     /* ecriture dans le XML */
 
-    if (remove("annonces.xml") != 0)
+    if (remove(chemin.toStdString().c_str()) != 0)
     {
         QMessageBox::critical(this,"Erreur","Impossible d'ouvrir le ficher XML");
     }
 
     ofstream newfichier;
-    newfichier.open("annonces.xml", ios::out);
+    newfichier.open(chemin.toStdString(), ios::out);
 
     newfichier <<"<?xml version='1.0' encoding='ISO-8859-1' standalone='yes'?>" << endl;
     newfichier <<"<bloc_annonces>" << endl;
@@ -263,7 +264,7 @@ void MainWindow::quitMain()
     newfichier.close();
 
     QDomDocument dom("annonces");
-    QFile doc_xml("annonces.xml");
+    QFile doc_xml(chemin);
     if(!doc_xml.open(QIODevice::ReadOnly))
     {
         QMessageBox::critical(this,"Erreur","Impossible d'ouvrir le ficher XML");
@@ -312,7 +313,7 @@ void MainWindow::quitMain()
         QString write_doc = dom.toString();
 
 
-        QFile fichier("annonces.xml");
+        QFile fichier(chemin);
         if(!fichier.open(QIODevice::WriteOnly))
         {
             fichier.close();

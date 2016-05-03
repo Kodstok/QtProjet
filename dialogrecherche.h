@@ -19,6 +19,7 @@ private:
     Ui::DialogRecherche *ui;
 
 private slots:
+    void recherche();
 
 };
 

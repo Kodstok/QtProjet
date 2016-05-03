@@ -4,7 +4,7 @@
 #include "objeta.h"
 #include "annonce.h"
 #include <ctime>
-
+#include <time.h>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QApplication>
@@ -144,7 +144,7 @@ void AchatCommit::slotFinalConclure()
     struct tm timeInfo;
     char format[32];
     time(&_time);
-    localtime_s(&timeInfo, &_time);
+    localtime_r( &_time,&timeInfo);
     strftime(format, 32, "%Y-%m-%d %H-%M", &timeInfo);
 
     QString date_s = format;

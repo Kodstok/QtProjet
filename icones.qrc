@@ -1,8 +1,9 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource>
-    <file>ajouter.png</file>
-    <file>recherche.png</file>
-    <file>quitter.png</file>
-    <file>exit.png</file>
-</qresource>
+<RCC>
+    <qresource prefix="/">
+        <file>ajouter.png</file>
+        <file>recherche.png</file>
+        <file>quitter.png</file>
+        <file>exit.png</file>
+        <file>acceuil.png</file>
+    </qresource>
 </RCC>
