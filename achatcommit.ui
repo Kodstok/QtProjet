@@ -7,23 +7,23 @@
     <x>0</x>
     <y>0</y>
     <width>736</width>
-    <height>443</height>
+    <height>475</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>736</width>
-    <height>443</height>
+    <height>475</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>736</width>
-    <height>443</height>
+    <height>475</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Vente</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -44,7 +44,7 @@
      <x>20</x>
      <y>130</y>
      <width>701</width>
-     <height>221</height>
+     <height>270</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -146,8 +146,8 @@
   <widget class="QPushButton" name="pushConclure">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>370</y>
+     <x>120</x>
+     <y>400</y>
      <width>341</width>
      <height>61</height>
     </rect>
@@ -159,8 +159,8 @@
   <widget class="QPushButton" name="pushRetour">
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>402</y>
+     <x>510</x>
+     <y>410</y>
      <width>91</width>
      <height>31</height>
     </rect>

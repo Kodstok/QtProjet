@@ -42,7 +42,6 @@ MainWindow::MainWindow(QWidget *parent) :
                      this,SLOT(slot_refresh()));
 
 
-
     /* création du tableau d'annonces */
     tab_annonces = new vector<Annonce>();
 
@@ -249,7 +248,7 @@ void MainWindow::dialogRech()
 void MainWindow::quitMain()
 {
     /* ecriture dans le XML */
-
+    printf("quitMain\n");
     if (remove(chemin.toStdString().c_str()) != 0)
     {
         QMessageBox::critical(this,"Erreur","Impossible d'ouvrir le ficher XML");
@@ -329,6 +328,7 @@ void MainWindow::quitMain()
     /* Quitter l'application */
     QCoreApplication::quit();
 }
+
 
 MainWindow::~MainWindow()
 {

@@ -22,7 +22,7 @@ public:
     explicit AchatCommit(DialogDetails *parent = 0, int _id = 0, std::vector<Annonce> *_ref_tab = nullptr);
     ~AchatCommit();
     DialogDetails *b_parent;
-
+QString cheminstats ="/Users/Kodstok/build-TpQt-Desktop_Qt_5_6_0_clang_64bit-Profile/stats_conclus.xml";
 
 private:
 

@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Ajout</string>
   </property>
   <widget class="QPushButton" name="pushButton_ImgSelect">
    <property name="geometry">

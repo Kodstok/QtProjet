@@ -82,7 +82,7 @@ void AchatCommit::slotFinalConclure()
     /*####### Ecrire dans stats.xml #######*/
 
     QDomDocument dom("stats_conlus");
-    QFile doc_xml("stats_conclus.xml");
+    QFile doc_xml(cheminstats);
     if(!doc_xml.open(QIODevice::ReadOnly))
     {
         QMessageBox::critical(this,"Erreur","Impossible d'ouvrir le ficher XML");
@@ -155,7 +155,7 @@ void AchatCommit::slotFinalConclure()
     QString write_doc = dom.toString();
 
 
-    QFile fichier("stats_conclus.xml");
+    QFile fichier(cheminstats);
     if(!fichier.open(QIODevice::WriteOnly))
     {
         fichier.close();
